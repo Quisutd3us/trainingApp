@@ -1,0 +1,35 @@
+<div class="container d-flex justify-content-center align-items-center">
+  <div class="row my-4">
+    <div class="col-12">
+      <form (ngSubmit)="onSubmit(forma,pwInput, emInput)" #forma="ngForm" novalidate>
+        <div class="form-group">
+          <mat-form-field>
+            <input matInput type=email placeholder="Your Email" ngModel name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+              #emInput="ngModel">
+            <mat-error *ngIf="emInput.hasError('required')">El Correo es Obligatorio</mat-error>
+            <mat-error>No es un correo Valido</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-group">
+          <mat-form-field>
+            <input matInput type="password" placeholder="Your Password" ngModel name="pass" minlength="6" #pwInput="ngModel">
+            <mat-hint align="end">{{pwInput.value?.length}} /6</mat-hint>
+            <mat-error>El Password no tiene 6 caracteres</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-group">
+          <mat-form-field>
+            <input matInput placeholder="Your Birthday" [matDatepicker]="picker" [max]="maxDate" ngModel name="birthdate"
+              required>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div class="form-group">
+          <mat-checkbox ngModel name="agree" required agreeCheck="ngModel">Agree the terms</mat-checkbox>
+        </div>
+        <button type="submit" mat-raised-button color="primary" [disabled]="!forma.valid">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>

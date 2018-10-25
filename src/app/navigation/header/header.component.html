@@ -1,0 +1,13 @@
+<mat-toolbar color="primary" class="flex">
+  <div>
+    <button mat-icon-button (click)="sidenavToggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
+  <div>Logo</div>
+  <div class="ml-auto d-none d-lg-block links">
+    <a [routerLink]="[ '/login' ] ">Login</a>
+    <a [routerLink]="[ '/signup' ] ">SignUp</a>
+    <a [routerLink]="[ '/training' ]">training</a>
+  </div>
+</mat-toolbar>
